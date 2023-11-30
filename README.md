@@ -66,10 +66,10 @@ Docker должен быть установлен, демон-процесс з�
 Загружаем проекты с измененными конфигурационными файлами на свой GIT.
 ### Публикация и запуск приложений
 #### Создаем 2 образа приложений (измените ссылку с моего GIT на свой)
-`docker build -f DockerfileFileParser https://github.com/bag162/TestProjectIvan.git -t fileparser`<br>
-`docker build -f DockerfileDataProcessor https://github.com/bag162/TestProjectIvan.git -t dataprocessor`<br>
+`docker build -f DockerfileFileParser https://github.com/bag162/TestProjectIvan.git -t fileparser/app:1.0`<br>
+`docker build -f DockerfileDataProcessor https://github.com/bag162/TestProjectIvan.git -t dataprocessor/app:1.0`<br>
 #### Смотрим созданные образы
 `docker images`
 #### Запускаем приложения
-`docker run -d fileparser`<br>
-`docker run -d dataprocessor`<br>
+`docker run -d fileparser/app:1.0`<br>
+`docker run -d dataprocessor/app:1.0`<br>
