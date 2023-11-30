@@ -5,7 +5,6 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["TestProjectIvan/status.xml", "/"]
 COPY ["TestProjectIvan/FileParserService.csproj", "TestProjectIvan/"]
 COPY ["Models/Models.csproj", "Models/"]
 RUN dotnet restore "TestProjectIvan/FileParserService.csproj"
