@@ -17,7 +17,7 @@ namespace FileParserService.Services
             XmlDocument xDoc = new XmlDocument();
             try
             {
-                using (FileStream fs = new FileStream("status.xml", FileMode.OpenOrCreate)) // читаем файл в XmlDocument
+                using (FileStream fs = new FileStream("wwwroot/status.xml", FileMode.OpenOrCreate)) // читаем файл в XmlDocument
                 {
                     xDoc.Load(fs);
                 }

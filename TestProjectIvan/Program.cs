@@ -1,7 +1,6 @@
 ﻿using FileParserService;
 using Microsoft.Extensions.Logging;
 
-
 // Create logger
 using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
 ILogger logger = factory.CreateLogger<Program>();
