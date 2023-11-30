@@ -70,6 +70,10 @@ Docker должен быть установлен, демон-процесс з�
 `docker build -f DockerfileDataProcessor https://github.com/bag162/TestProjectIvan.git -t dataprocessor/app:1.0`<br>
 #### Смотрим созданные образы
 `docker images`
+#### Создаем Volume для DataProcessor
+`docker volume create dataproc-vol`
 #### Запускаем приложения
 `docker run -d fileparser/app:1.0`<br>
-`docker run -d dataprocessor/app:1.0`<br>
+`docker run -d --mount source=dataproc-vol,target=/app dataprocessor/app:1.0`<br>
+## Поздравляю.
+Результат работы DataProcessor можно посмотреть по пути: /var/lib/docker/volumes/my-vol/_data.XMLDocDb.db
