@@ -3,7 +3,7 @@ namespace FileParserService.QueueManager
 {
 	public interface IQueueService
 	{
-		Task SendMessage(object obj);
-		Task SendMessage(string message);
+		Task SendMessageAsync(object obj);
+		Task SendMessageAsync(string message);
 	}
 }

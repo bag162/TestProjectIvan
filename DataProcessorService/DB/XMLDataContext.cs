@@ -19,7 +19,7 @@ namespace DataProcessorService.DB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=XMLDocDb.db"); // Путь к файлу базы
+            optionsBuilder.UseSqlite("Filename=wwwroot/XMLDocDb.db"); // Путь к файлу базы
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

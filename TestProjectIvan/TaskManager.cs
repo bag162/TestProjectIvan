@@ -31,6 +31,11 @@ namespace FileParserService
             string jsonXMLData = XMLSerializer.SerializeXmlDocumentToJson(xmlData); // Сериализация его в JSON, в том числе и его дочерних компонентов (RapidControlStatus)
             var data = JsonConvert.DeserializeObject<StatusModel>(jsonXMLData); // Сериализуем в объект для удобной обработки
             List<DeviceStatus> correctDeviceStatus = new();
+            if (data.InstrumentStatus.DeviceStatus is null)
+            {
+                this.logger.LogWarning("Device status is null");
+                return;
+            }
             foreach (var item in data.InstrumentStatus.DeviceStatus)
             {
                 Regex regex = new Regex(@".ModuleState.:.(\w+).");
@@ -38,6 +43,9 @@ namespace FileParserService
                 string replacement = enumValues[random.Next(enumValues.Length)].ToString();
                 try
                 {
+                    if (item.RapidControlStatus is null)
+                        continue;
+
                     item.RapidControlStatus = regex.Replace(item.RapidControlStatus, (group) =>
                     {
                         return group.Value.Replace("Online", replacement); 
@@ -56,7 +64,7 @@ namespace FileParserService
             }
             string sendedData = JsonConvert.SerializeObject(data); // Сериализуем данные в JSON
             this.logger.LogInformation("Sending an XML file to the queue");
-            await rabbitMqService.SendMessage(sendedData); // Отправляем в очередь
+            await rabbitMqService.SendMessageAsync(sendedData); // Отправляем в очередь
             return;
         }
     }

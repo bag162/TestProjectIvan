@@ -53,7 +53,7 @@ namespace DataProcessorService.RMQ
                     throw;
                 }
 				this.logger.LogInformation("Data is parsed. RoutingK: " + ea.RoutingKey);
-				this.statusesDBService.AddStatusModelAsync(model); // Отправляем на добавление в БД
+				await this.statusesDBService.AddStatusModelAsync(model); // Отправляем на добавление в БД
 				this.logger.LogInformation("Data processed. RoutingK: " + ea.RoutingKey);
 				this.channel.BasicAck(ea.DeliveryTag, false);
 			};

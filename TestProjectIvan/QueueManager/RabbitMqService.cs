@@ -24,13 +24,13 @@ namespace FileParserService.QueueManager
             this.logger = loggerFactory.CreateLogger<RabbitMqService>();
         }
 
-        public async Task SendMessage(object obj)
+        public async Task SendMessageAsync(object obj)
         {
             var message = JsonSerializer.Serialize(obj);
-            await SendMessage(message);
+            await SendMessageAsync(message);
         }
 
-        public async Task SendMessage(string message)
+        public async Task SendMessageAsync(string message)
         {
             try
             {
