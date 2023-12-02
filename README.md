@@ -76,4 +76,4 @@ Docker должен быть установлен, демон-процесс з�
 `docker run -d fileparser/app:1.0`<br>
 `docker run -d --mount source=dataproc-vol,target=/app dataprocessor/app:1.0`<br>
 ## Поздравляю.
-Результат работы DataProcessor можно посмотреть по пути: /var/lib/docker/volumes/my-vol/_data.XMLDocDb.db
+Результат работы DataProcessor можно посмотреть по пути: /var/lib/docker/volumes/my-vol/_data/wwwroot/XMLDocDb.db
